@@ -15,7 +15,7 @@ source:
     - patches/pr-83.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # Client only (core library)
