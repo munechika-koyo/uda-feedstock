@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 fmt:
-- '11.2'
+- '12.0'
 libboost_devel:
 - '1.88'
 numpy:
