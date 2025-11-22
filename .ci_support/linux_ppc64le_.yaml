@@ -17,7 +17,7 @@ docker_image:
 fmt:
 - '11.2'
 libboost_devel:
-- '1.86'
+- '1.88'
 openssl:
 - '3.5'
 python_min:
