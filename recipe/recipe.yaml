@@ -15,7 +15,7 @@ source:
     - patches/pr-83.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # Client only (core library)
@@ -25,9 +25,9 @@ outputs:
     build:
       script:
         - if: unix
-          then: build_core.sh
+          then: scripts/build_core.sh
         - if: win
-          then: build_core.bat
+          then: scripts/build_core.bat
       files:
         include: ["**"]
         exclude:
@@ -66,8 +66,6 @@ outputs:
         - fmt
         - openssl
         - capnproto
-        - python ${{ python_min }}.*
-        - openjdk
         - if: linux and x86_64
           then: libtirpc
         - if: win
@@ -81,7 +79,6 @@ outputs:
       ignore_run_exports:
         from_package:
           - libxml2-devel
-          - python
           - if: win
             then:
               - zlib
@@ -110,6 +107,210 @@ outputs:
             - uda/serialisation/*.h
           files:
             - ${{ "Library/" if win }}lib/pkgconfig/uda-client.pc
+
+  # C++ wrapper
+  - package:
+      name: uda-cpp
+      version: ${{ version }}
+    build:
+      script:
+        - if: unix
+          then: scripts/build_cxx.sh
+        - if: win
+          then: scripts/build_cxx.bat
+      files:
+        include:
+          - ${{ "Library/" if win }}include/uda/c++/*
+          - ${{ "Library/" if win }}lib/pkgconfig/uda-cpp.pc
+          - if: win
+            then:
+              - Library/bin/uda_cpp.*
+              - Library/lib/uda_cpp.*
+            else:
+              - lib/libuda_cpp*
+        exclude:
+          - ${{ "Library/" if win }}lib/*_static.*
+    requirements:
+      build:
+        - ${{ compiler("cxx") }}
+        - ${{ stdlib("c") }}
+        - git
+        - cmake
+        - ninja
+        - pkg-config
+      host:
+        - libxml2-devel 2.14.*
+        - libboost-devel
+        - fmt
+        - openssl
+        - capnproto
+        - if: linux and x86_64
+          then: libtirpc
+        - if: win
+          then:
+            - dlfcn-win32
+            - zlib
+            - portablexdr
+      ignore_run_exports:
+        from_package:
+          - libxml2-devel
+          - libboost-devel
+          - capnproto
+          - if: win
+            then:
+              - zlib
+              - dlfcn-win32
+      run:
+        - libuda-client
+      run_exports:
+        - ${{ pin_subpackage("uda-cpp", upper_bound="x.x") }}
+    tests:
+      - package_contents:
+          files:
+            - ${{ "Library/" if win }}lib/pkgconfig/uda-cpp.pc
+          lib:
+            - uda_cpp
+          include:
+            - uda/c++/*.hpp
+
+  # Python client
+  - package:
+      name: pyuda
+      version: ${{ version }}
+    build:
+      script:
+        - if: unix
+          then: scripts/build_pyuda.sh
+        - if: win
+          then: scripts/build_pyuda.bat
+      files:
+        include:
+          - if: unix
+            then: lib/python*/site-packages/*
+          - if: win
+            then: Lib/site-packages/*
+    requirements:
+      build:
+        - ${{ compiler("cxx") }}
+        - ${{ stdlib("c") }}
+        - git
+        - cmake
+        - ninja
+        - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - cython
+            - numpy
+      host:
+        - libuda-client
+        - libxml2-devel 2.14.*
+        - libboost-devel
+        - fmt
+        - openssl
+        - capnproto
+        - if: linux and x86_64
+          then: libtirpc
+        - if: win
+          then:
+            - dlfcn-win32
+            - zlib
+            - portablexdr
+        # Python and dependencies
+        - pip
+        - python
+        - setuptools
+        - cython
+        - numpy
+        - six
+      run:
+        - six
+        - progress
+      ignore_run_exports:
+        from_package:
+          - libxml2-devel
+          - libboost-devel
+          - fmt
+          - openssl
+          - capnproto
+          - if: win
+            then:
+              - zlib
+              - dlfcn-win32
+    tests:
+      - python:
+          imports:
+            - pyuda
+          pip_check: true
+
+  # Java wrapper
+  - package:
+      name: uda-java
+      version: ${{ version }}
+    build:
+      script:
+        - if: unix
+          then: scripts/build_java.sh
+        - if: win
+          then: scripts/build_java.bat
+      files:
+        include:
+          - ${{ "Library/" if win }}java/*
+          - if: win
+            then:
+              - Library/bin/uda_jni.*
+              - Library/lib/uda_jni.*
+            else:
+              - lib/libuda_jni*
+        exclude:
+          - ${{ "Library/" if win }}lib/*_static.*
+    requirements:
+      build:
+        - ${{ compiler("cxx") }}
+        - ${{ stdlib("c") }}
+        - git
+        - cmake
+        - ninja
+        - pkg-config
+      host:
+        - libxml2-devel 2.14.*
+        - libboost-devel
+        - fmt
+        - openssl
+        - capnproto
+        - openjdk
+        - if: linux and x86_64
+          then: libtirpc
+        - if: win
+          then:
+            - dlfcn-win32
+            - zlib
+            - portablexdr
+      run:
+        - libuda-client
+        - openjdk
+      ignore_run_exports:
+        from_package:
+          - libxml2-devel
+          - libboost-devel
+          - capnproto
+          - fmt
+          - openssl
+          - if: win
+            then:
+              - zlib
+              - dlfcn-win32
+      run_exports:
+        - ${{ pin_subpackage("uda-java", upper_bound="x.x") }}
+    tests:
+      - package_contents:
+          files:
+            - ${{ "Library/" if win }}java/UDA.jar
+            - if: unix
+              then: java/UDA-${{ version }}.jar
+          lib:
+            - uda_jni
 
 about:
   homepage: https://ukaea.github.io/UDA/

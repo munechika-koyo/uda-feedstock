@@ -1,8 +1,5 @@
 @echo off
 
-:: Set environment variables for UDA build
-set UDA_PYTHON_SHARED=ON
-
 :: === Build & Install UDA client ===
 :: Configure and build
 cmake %CMAKE_ARGS% ^
@@ -15,8 +12,8 @@ cmake %CMAKE_ARGS% ^
     -D NO_MEMCACHE=ON ^
     -D NO_WRAPPERS=OFF ^
     -D NO_CXX_WRAPPER=OFF ^
-    -D NO_PYTHON_WRAPPER=OFF ^
-    -D NO_JAVA_WRAPPER=OFF ^
+    -D NO_PYTHON_WRAPPER=ON ^
+    -D NO_JAVA_WRAPPER=ON ^
     -D NO_IDL_WRAPPER=ON ^
     -D FAT_IDL=OFF ^
     -D NO_CLI=OFF ^

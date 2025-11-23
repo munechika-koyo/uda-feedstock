@@ -90,6 +90,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libuda--client-green.svg)](https://anaconda.org/conda-forge/libuda-client) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libuda-client.svg)](https://anaconda.org/conda-forge/libuda-client) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libuda-client.svg)](https://anaconda.org/conda-forge/libuda-client) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libuda-client.svg)](https://anaconda.org/conda-forge/libuda-client) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyuda-green.svg)](https://anaconda.org/conda-forge/pyuda) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyuda.svg)](https://anaconda.org/conda-forge/pyuda) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyuda.svg)](https://anaconda.org/conda-forge/pyuda) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyuda.svg)](https://anaconda.org/conda-forge/pyuda) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-uda--cpp-green.svg)](https://anaconda.org/conda-forge/uda-cpp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/uda-cpp.svg)](https://anaconda.org/conda-forge/uda-cpp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/uda-cpp.svg)](https://anaconda.org/conda-forge/uda-cpp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/uda-cpp.svg)](https://anaconda.org/conda-forge/uda-cpp) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-uda--java-green.svg)](https://anaconda.org/conda-forge/uda-java) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/uda-java.svg)](https://anaconda.org/conda-forge/uda-java) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/uda-java.svg)](https://anaconda.org/conda-forge/uda-java) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/uda-java.svg)](https://anaconda.org/conda-forge/uda-java) |
 
 Installing uda
 ==============
@@ -101,16 +104,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libuda-client` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libuda-client, pyuda, uda-cpp, uda-java` can be installed with `conda`:
 
 ```
-conda install libuda-client
+conda install libuda-client pyuda uda-cpp uda-java
 ```
 
 or with `mamba`:
 
 ```
-mamba install libuda-client
+mamba install libuda-client pyuda uda-cpp uda-java
 ```
 
 It is possible to list all of the versions of `libuda-client` available on your platform with `conda`:
