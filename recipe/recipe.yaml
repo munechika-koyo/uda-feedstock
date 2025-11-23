@@ -60,6 +60,9 @@ outputs:
         - cmake
         - ninja
         - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - capnproto
       host:
         - libxml2-devel 2.14.*
         - libboost-devel
@@ -138,6 +141,9 @@ outputs:
         - cmake
         - ninja
         - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - capnproto
       host:
         - libxml2-devel 2.14.*
         - libboost-devel
@@ -199,6 +205,7 @@ outputs:
         - pkg-config
         - if: build_platform != target_platform
           then:
+            - capnproto
             - python
             - cross-python_${{ target_platform }}
             - cython
@@ -273,6 +280,9 @@ outputs:
         - cmake
         - ninja
         - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - capnproto
       host:
         - libxml2-devel 2.14.*
         - libboost-devel
