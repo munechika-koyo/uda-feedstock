@@ -245,6 +245,7 @@ outputs:
             then:
               - zlib
               - dlfcn-win32
+              - portablexdr
     tests:
       - python:
           imports:
