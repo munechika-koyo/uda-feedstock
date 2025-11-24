@@ -10,9 +10,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:
 else
   export CAPNP_EXECUTABLE="${BUILD_PREFIX}/bin/capnp"
   export CAPNPC_CXX_EXECUTABLE="${BUILD_PREFIX}/bin/capnpc-c++"
-  export Java_JAVA_EXECUTABLE="${BUILD_PREFIX}/bin/java"
-  export Java_JAVAC_EXECUTABLE="${BUILD_PREFIX}/bin/javac"
-  export Java_JAVAH_EXECUTABLE="${BUILD_PREFIX}/bin/java"
+  export Java_JAVA_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/java"
+  export Java_JAVAC_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/javac"
+  export Java_JAVAH_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/java"
 fi
 
 # CMake extra configuration:
