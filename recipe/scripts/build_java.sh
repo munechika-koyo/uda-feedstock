@@ -9,6 +9,8 @@ else
   export CAPNP_EXECUTABLE="${BUILD_PREFIX}/bin/capnp"
   export CAPNPC_CXX_EXECUTABLE="${BUILD_PREFIX}/bin/capnpc-c++"
   export Java_JAVA_EXECUTABLE="${BUILD_PREFIX}/bin/java"
+  export Java_JAVAC_EXECUTABLE="${BUILD_PREFIX}/bin/javac"
+  export Java_JAVAH_EXECUTABLE="${BUILD_PREFIX}/bin/javah"
 fi
 
 # CMake extra configuration:
@@ -38,6 +40,8 @@ extra_cmake_args=(
     # Java JNI
     -D JAVA_HOME="${PREFIX}/lib/jvm"
     -D Java_JAVA_EXECUTABLE="${Java_JAVA_EXECUTABLE}"
+    -D Java_JAVAC_EXECUTABLE="${Java_JAVAC_EXECUTABLE}"
+    -D Java_JAVAH_EXECUTABLE="${Java_JAVAH_EXECUTABLE}"
 )
 
 cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
