@@ -34,9 +34,8 @@ extra_cmake_args=(
     # CLI
     -D NO_CLI=
     # Java JNI
-    -D JAVA_INCLUDE_PATH="${PREFIX}/lib/jvm/include"
-    -D JAVA_INCLUDE_PATH2="${PREFIX}/lib/jvm/include"
-    -D JAVA_JVM_LIBRARY="${PREFIX}/lib/jvm/lib"
+    -D JNI_INCLUDE_DIRS="${PREFIX}/lib/jvm/include"
+    -D JNI_LIBRARIES="${PREFIX}/lib/jvm/lib"
 )
 
 cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
