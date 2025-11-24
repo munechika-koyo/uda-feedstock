@@ -7,12 +7,16 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:
   export Java_JAVA_EXECUTABLE="${PREFIX}/lib/jvm/bin/java"
   export Java_JAVAC_EXECUTABLE="${PREFIX}/lib/jvm/bin/javac"
   export Java_JAVAH_EXECUTABLE="${PREFIX}/lib/jvm/bin/java"
+  export Java_JAR_EXECUTABLE="${PREFIX}/lib/jvm/bin/jar"
+  export Java_JARSIGNER_EXECUTABLE="${PREFIX}/lib/jvm/bin/jarsigner"
 else
   export CAPNP_EXECUTABLE="${BUILD_PREFIX}/bin/capnp"
   export CAPNPC_CXX_EXECUTABLE="${BUILD_PREFIX}/bin/capnpc-c++"
   export Java_JAVA_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/java"
   export Java_JAVAC_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/javac"
   export Java_JAVAH_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/java"
+  export Java_JAR_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/jar"
+  export Java_JARSIGNER_EXECUTABLE="${BUILD_PREFIX}/lib/jvm/bin/jarsigner"
 fi
 
 # CMake extra configuration:
@@ -44,6 +48,8 @@ extra_cmake_args=(
     -D Java_JAVA_EXECUTABLE="${Java_JAVA_EXECUTABLE}"
     -D Java_JAVAC_EXECUTABLE="${Java_JAVAC_EXECUTABLE}"
     -D Java_JAVAH_EXECUTABLE="${Java_JAVAH_EXECUTABLE}"
+    -D Java_JAR_EXECUTABLE="${Java_JAR_EXECUTABLE}"
+    -D Java_JARSIGNER_EXECUTABLE="${Java_JARSIGNER_EXECUTABLE}"
 )
 
 cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
