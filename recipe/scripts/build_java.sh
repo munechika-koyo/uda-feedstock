@@ -7,6 +7,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:
 else
   export CAPNP_EXECUTABLE="${BUILD_PREFIX}/bin/capnp"
   export CAPNPC_CXX_EXECUTABLE="${BUILD_PREFIX}/bin/capnpc-c++"
+  export JNI_INCLUDE_PATH="${PREFIX}/lib/jvm/include"
+  export JAVA_INCLUDE_PATH="${PREFIX}/lib/jvm/lib"
+  export JAVA_JVM_LIBRARY="${PREFIX}/lib/jvm/lib"
 fi
 
 # CMake extra configuration:
