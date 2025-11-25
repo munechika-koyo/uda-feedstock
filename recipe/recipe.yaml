@@ -326,7 +326,7 @@ outputs:
 
 about:
   homepage: https://ukaea.github.io/UDA/
-  summary: Universal Data Access (USA) library to provide data over the network in a unified data object.
+  summary: Universal Data Access (UDA) library to provide data over the network in a unified data object.
   description: |
     The UDA can be either run as a client-server API, running as thin client with all functionality
     being handled on a remote server, or as fat-client API where both the client access and plugin
