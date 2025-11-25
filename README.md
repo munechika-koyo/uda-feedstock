@@ -7,7 +7,7 @@ Home: https://ukaea.github.io/UDA/
 
 Package license: Apache-2.0
 
-Summary: Universal Data Access (USA) library to provide data over the network in a unified data object.
+Summary: Universal Data Access (UDA) library to provide data over the network in a unified data object.
 
 Development: https://github.com/ukaea/UDA
 
