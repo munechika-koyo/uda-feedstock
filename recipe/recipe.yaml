@@ -1,6 +1,6 @@
 context:
   name: UDA
-  version: "2.9.1"
+  version: "2.9.3"
   username: ukaea
 
 recipe:
@@ -9,13 +9,13 @@ recipe:
 
 source:
   url: https://github.com//${{ username }}/${{ name }}/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 188449998c94d377b8fc3d059b2e979669c2624b0f59f34a1674d5d2ba1b2db2
+  sha256: c3627ebac5bf5cd10c25cbf79bc4c2adb33989c3860810f0512c4f15ad77e84e
   patches:
     - patches/udaClient.patch
     - patches/pr-83.patch
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   # Client only (core library)
