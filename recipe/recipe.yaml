@@ -16,7 +16,7 @@ source:
     - patches/pr-118-remove_cxx_std.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # Client only (core library)
