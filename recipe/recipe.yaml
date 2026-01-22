@@ -80,13 +80,6 @@ outputs:
       run:
         - if: linux and x86_64
           then: libtirpc
-      ignore_run_exports:
-        from_package:
-          - libxml2-devel
-          - if: win
-            then:
-              - zlib
-              - dlfcn-win32
       run_exports:
         - ${{ pin_subpackage("libuda-client", upper_bound="x.x") }}
     tests:
